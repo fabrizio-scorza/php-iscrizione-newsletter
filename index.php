@@ -3,8 +3,11 @@ include __DIR__ . '/utilities.php';
 
 $email = $_POST['email'] ?? null;
 
-$is_correct = register($email);
+$is_correct = '';
 
+if ($email == !null) {
+    $is_correct = register($email);
+}
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +35,7 @@ $is_correct = register($email);
             <input type="submit" class="btn btn-dark">
         </form>
         <?php
-        if ($email == !null) {
+        if ($is_correct != '') {
             if ($is_correct) {
         ?>
                 <div class="alert alert-success" role="alert">

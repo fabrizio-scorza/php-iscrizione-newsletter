@@ -8,9 +8,9 @@
                 <h1> Titolone Super Accattivante Mega Waoo</h1>
             </div>
             <ul class="d-flex gap-4">
-                <li>link about us</li>
-                <li>link mission</li>
-                <li>link donazioni</li>
+                <li><a href="">link about us</a></li>
+                <li><a href="">link mission</a></li>
+                <li><a href="">link donazioni</a></li>
             </ul>
         </nav>
     </div>

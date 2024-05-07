@@ -20,11 +20,11 @@ if ($email == !null) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
-<body class="bg-dark">
+<body class="bg-dark d-flex flex-column vh-100">
     <?php
     include __DIR__ . '/partials/template/header.php';
     ?>
-    <div class="container">
+    <div class="container flex-grow-1">
         <div class="text-white my-5">
             <h2>Registrazione alla Newsletter</h2>
             <h4>inserisic i dati e invia per registrarti alla nostra newsletter</h4>
@@ -52,6 +52,9 @@ if ($email == !null) {
         }
         ?>
     </div>
+    <?php
+    include __DIR__ . '/partials/template/footer.php';
+    ?>
 </body>
 
 </html>

@@ -1,12 +1,23 @@
 <?php
-include __DIR__ . '/utilities.php';
+// apro la sessione
+session_start();
 
+// includo le utilities per chiamare la funzione
+include_once __DIR__ . '/partials/utilities.php';
+
+// null coalescing
 $email = $_POST['email'] ?? null;
 
-$is_correct = '';
-
+// controllo e chiamata alla funzione
 if ($email == !null) {
     $is_correct = register($email);
+
+
+    // salvo la variabile is correct nelle variabili di sessione
+    $_SESSION['validate_sub'] = $is_correct;
+
+    // redirect
+    header('Location: ./subscription.php');
 }
 ?>
 
@@ -24,34 +35,19 @@ if ($email == !null) {
     <?php
     include __DIR__ . '/partials/template/header.php';
     ?>
-    <div class="container flex-grow-1">
-        <div class="text-white my-5">
-            <h2>Registrazione alla Newsletter</h2>
-            <h4>inserisic i dati e invia per registrarti alla nostra newsletter</h4>
+    <main class="flex-grow-1">
+        <div class="container">
+            <div class="text-white my-5">
+                <h2>Registrazione alla Newsletter</h2>
+                <h4>inserisic i dati e invia per registrarti alla nostra newsletter</h4>
+            </div>
+            <form action="" method="POST" class="form-control d-flex align-items-center gap-2">
+                <label for="email">Inserisci la tua e-mail: </label>
+                <input type="email" name="email" id="email" placeholder="esempio@esempio.es" class="px-3 flex-grow-1">
+                <input type="submit" class="btn btn-dark">
+            </form>
         </div>
-        <form action="" method="POST" class="form-control d-flex align-items-center gap-2">
-            <label for="email">Inserisci la tua e-mail: </label>
-            <input type="email" name="email" id="email" placeholder="esempio@esempio.es" class="px-3 flex-grow-1">
-            <input type="submit" class="btn btn-dark">
-        </form>
-        <?php
-        if ($is_correct != '') {
-            if ($is_correct) {
-        ?>
-                <div class="alert alert-success" role="alert">
-                    la tua e-mail è stata registrata con successo!!
-                </div>
-            <?php
-            } else {
-            ?>
-                <div class="alert alert-warning" role="alert">
-                    qualcosa è andato storto, controlla la mail inserita e invia nuovamente!!
-                </div>
-        <?php
-            }
-        }
-        ?>
-    </div>
+    </main>
     <?php
     include __DIR__ . '/partials/template/footer.php';
     ?>

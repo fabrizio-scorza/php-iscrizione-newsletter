@@ -2,7 +2,9 @@
 include __DIR__ . '/utilities.php';
 
 $email = $_POST['email'] ?? null;
-register($email);
+
+$is_correct = register($email);
+
 ?>
 
 <!DOCTYPE html>
@@ -16,16 +18,36 @@ register($email);
 </head>
 
 <body class="bg-dark">
+    <?php
+    include __DIR__ . '/partials/template/header.php';
+    ?>
     <div class="container">
         <div class="text-white my-5">
-            <h1>Registrazione alla Newsletter</h1>
-            <h3>inserisic i dati e invia per registrarti alla nostra newsletter</h3>
+            <h2>Registrazione alla Newsletter</h2>
+            <h4>inserisic i dati e invia per registrarti alla nostra newsletter</h4>
         </div>
         <form action="" method="POST" class="form-control d-flex align-items-center gap-2">
             <label for="email">Inserisci la tua e-mail: </label>
             <input type="email" name="email" id="email" placeholder="esempio@esempio.es" class="px-3 flex-grow-1">
             <input type="submit" class="btn btn-dark">
         </form>
+        <?php
+        if ($email == !null) {
+            if ($is_correct) {
+        ?>
+                <div class="alert alert-success" role="alert">
+                    la tua e-mail è stata registrata con successo!!
+                </div>
+            <?php
+            } else {
+            ?>
+                <div class="alert alert-warning" role="alert">
+                    qualcosa è andato storto, controlla la mail inserita e invia nuovamente!!
+                </div>
+        <?php
+            }
+        }
+        ?>
     </div>
 </body>
 

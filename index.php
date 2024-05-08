@@ -12,7 +12,6 @@ $email = $_POST['email'] ?? null;
 if ($email == !null) {
     $is_correct = register($email);
 
-
     // salvo la variabile is correct nelle variabili di sessione
     $_SESSION['validate_sub'] = $is_correct;
 
